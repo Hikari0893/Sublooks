@@ -1,0 +1,14 @@
+*.png
+*.npy
+*.pyc
+*.xml
+*.html
+*.gif
+*.xsd*
+*.tif
+*.cos
+*.jpg
+*.kml
+*.txt
+
+
