@@ -1,0 +1,10 @@
+name: sublooks
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - numpy
+  - pydot
+  - matplotlib
+  - opencv
+  - scikit-learn
