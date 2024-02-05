@@ -17,7 +17,7 @@ from utils import cos2mat
 slc_path = "./data/koeln_slc.npy"
 slc_raw = np.load(slc_path)
 slc = slc_raw[0:500,0:500,0] + 1j* slc_raw[0:500,0:500,1]
-fft_img = fftshift(fft(slc,axis=1))
+# fft_img = fftshift(fft(slc,axis=1))
 
 sub_a_path = "sublook1.npy"
 sub_b_path = "sublook2.npy"
@@ -25,7 +25,7 @@ sub_b_path = "sublook2.npy"
 sub_a = np.load(sub_a_path)
 sub_b = np.load(sub_b_path)
 
-maxplot = np.mean(np.abs(slc)*3)
+maxplot = np.mean(np.abs(slc))*3
 plt.figure()
 plt.imshow(np.abs(sub_a[0:500,0:500]), vmax=maxplot, vmin=0, cmap="gray")
 
@@ -40,4 +40,14 @@ twolook_amp = np.sqrt((np.abs(sub_a[0:500,0:500])**2 + np.abs(sub_b[0:500,0:500]
 plt.figure()
 plt.imshow(twolook_amp, vmax=maxplot, vmin=0, cmap="gray")
 
-plt.show()
+# plt.figure()
+# plt.imshow(twolook_amp/np.abs(slc), vmax=4, vmin=0, cmap="gray")
+
+from utils import plot_residues, T_EF
+
+rs = plot_residues(np.abs(slc)**2, twolook_amp**2, res_only=True)
+# rs = T_EF(rs, 0.5, 1.5, 0, 255)
+
+print(np.mean(rs))
+print(np.var(rs))
+a=2
